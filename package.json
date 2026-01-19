@@ -1,6 +1,6 @@
 {
-  "name": "com.anda.webview",
-  "displayName": "MyWebApp",
+  "name": "com.arham.baca",
+  "displayName": "Baca-APK",
   "version": "1.0.0",
   "dependencies": {
     "cordova-android": "^12.0.0"
