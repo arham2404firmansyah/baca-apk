@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.anda.webview" version="1.0.0" xmlns="http://www.w3.org/ns/widgets">
-    <name>Nama Aplikasi Anda</name>
+<widget id="com.arham.baca" version="1.0.0" xmlns="http://www.w3.org/ns/widgets">
+    <name>Baca APK</name>
     <content src="index.html" />
     <access origin="*" />
     <allow-navigation href="*" />
