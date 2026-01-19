@@ -19,16 +19,13 @@ jobs:
 
       - name: Setup & Build
         run: |
-          # Otomatis buat folder jika lupa
-          mkdir -p www
-          if [ -f "index.html" ]; then mv index.html www/; fi
-          
+          # Perintah untuk build
           cordova platform add android
           cordova build android --debug
 
       - name: Upload APK
-        # Inilah yang paling sering menyebabkan error jika masih v3
+        # Inilah yang paling penting diubah ke v4
         uses: actions/upload-artifact@v4
         with:
-          name: Hasil-APK-Z-Learning
+          name: Hasil-APK-BACA-Arham
           path: platforms/android/app/build/outputs/apk/debug/app-debug.apk
