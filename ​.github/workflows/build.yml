@@ -4,7 +4,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      # Menggunakan versi terbaru (v4) agar tidak ditolak GitHub
       - uses: actions/checkout@v4
 
       - name: Set up JDK 17
@@ -18,19 +17,16 @@ jobs:
 
       - name: Setup & Build
         run: |
-          # OTOMATIS: Membuat folder www jika belum ada
+          # Otomatis rapikan folder jika belum ada
           mkdir -p www
-          
-          # OTOMATIS: Memindahkan index.html ke folder www jika masih di luar
           if [ -f "index.html" ]; then mv index.html www/; fi
           
-          # Proses perakitan APK
           cordova platform add android
           cordova build android --debug
 
       - name: Upload APK
-        # WAJIB v4: Inilah yang tadi menyebabkan error merah
+        # Inilah kunci perbaikannya (menggunakan v4)
         uses: actions/upload-artifact@v4
         with:
-          name: Aplikasi-BACA-Arham
+          name: Aplikasi-BACA-Final
           path: platforms/android/app/build/outputs/apk/debug/app-debug.apk
