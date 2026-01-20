@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.arham.baca" version="1.0.0" xmlns="http://www.w3.org/ns/widgets">
     <name>Baca APK</name>
-    <preference name="AndroidXEnabled" value="true" />
-    <preference name="android-minSdkVersion" value="24" />
-    
+    <description>Aplikasi Media Pembelajaran Baca</description>
+    <author email="arham@example.com">Arham FR</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-navigation href="*" />
+    <preference name="AndroidXEnabled" value="true" />
 </widget>
