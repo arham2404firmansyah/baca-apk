@@ -2,7 +2,6 @@
 <widget id="com.arham.baca" version="1.0.0" xmlns="http://www.w3.org/ns/widgets">
     <name>Baca APK</name>
     <description>Aplikasi Media Pembelajaran</description>
-    <author email="dev@example.com">Developer</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-navigation href="*" />
