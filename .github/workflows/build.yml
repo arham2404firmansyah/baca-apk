@@ -19,44 +19,26 @@ jobs:
           java-version: '17'
 
       - name: Setup Android SDK
-        # Menggunakan action r0adkll untuk memasang peralatan Android lengkap
         uses: r0adkll/setup-android@v3
         with:
           api-level: 33
           build-tools: 33.0.2
 
-      - name: Install Cordova & Dependencies
+      - name: Debug Environment
+        # Memastikan jalur SDK sudah benar sebelum rakit
         run: |
-          npm install -g cordova
-          # Menggunakan npm install jika Anda belum memiliki package-lock.json
-          npm install || true
+          echo "ANDROID_HOME=$ANDROID_HOME"
+          java -version
 
-      - name: Prepare & Build
+      - name: Install Cordova
+        run: npm install -g cordova
+
+      - name: Build Android
         run: |
           mkdir -p www
-          cordova platform add android@12.0.0 --non-interactive || true
-          # PENTING: Menghapus --device agar tidak error di server
-          cordova build android --debug
-        env:
-          ANDROID_HOME: ${{ env.ANDROID_HOME }}
-
-      - name: Upload APK
-        uses: actions/upload-artifact@v4
-        with:
-          name: BACA-APK-FINAL-SUKSES
-          path: platforms/android/app/build/outputs/apk/debug/app-debug.apk
-
-      - name: Install Cordova CLI & plugin whitelist
-        run: |
-          npm install -g cordova
-          cordova plugin add cordova-plugin-whitelist || true
-
-      - name: Add Android platform
-        run: |
+          # Menambah platform secara bersih tanpa interaksi
           cordova platform add android@12.0.0 --no-interactive || true
-
-      - name: Build Android (assemble debug)
-        run: |
+          # Menggunakan --debug (BUKAN --device) agar tidak eror di server
           cordova build android --debug --no-telemetry
         env:
           CI: true
@@ -64,5 +46,5 @@ jobs:
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: BACA-APK-FINAL-SUKSES
+          name: BACA-APK-HASIL-FINAL
           path: platforms/android/app/build/outputs/apk/debug/app-debug.apk
